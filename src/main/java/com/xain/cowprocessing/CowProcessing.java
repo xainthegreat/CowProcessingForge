@@ -1,6 +1,8 @@
 package com.xain.cowprocessing;
 
 import com.mojang.logging.LogUtils;
+import com.xain.cowprocessing.entity.ModEntities;
+import com.xain.cowprocessing.item.ModItems;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -22,8 +24,10 @@ public class CowProcessing
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        modEventBus.addListener(this::commonSetup);
+        ModItems.register(modEventBus);
+        ModEntities.register(modEventBus);
 
+        modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
     }
 
